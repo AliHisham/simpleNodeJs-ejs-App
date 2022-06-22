@@ -20,8 +20,6 @@ mongoose
 
 myApp.set("view engine", "ejs");
 
-const port = process.env.PORT || 4000;
-
 myApp.get("/", (req, res) => {
   productModel.find((err, result) => {
     if (err) {
@@ -32,4 +30,10 @@ myApp.get("/", (req, res) => {
 });
 
 myApp.use("/", productRouter);
-myApp.listen(port, () => {});
+app.listen(process.env.PORT || 3000, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+});
