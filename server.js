@@ -20,7 +20,7 @@ mongoose
 
 myApp.set("view engine", "ejs");
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 myApp.get("/", (req, res) => {
   productModel.find((err, result) => {
