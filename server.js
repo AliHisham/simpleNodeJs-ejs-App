@@ -23,12 +23,7 @@ myApp.set("view engine", "ejs");
 const port = process.env.PORT || 4000;
 
 myApp.get("/", (req, res) => {
-  productModel.find((err, result) => {
-    if (err) {
-      res.send(err);
-    }
-    res.render("welcome.ejs");
-  });
+  res.render("welcome.ejs");
 });
 
 myApp.use("/", productRouter);
