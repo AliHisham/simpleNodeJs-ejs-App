@@ -1,10 +1,18 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const connectionString =
   "mongodb+srv://alii:123@cluster0.y3uv4.mongodb.net/nodeJsDb?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 const productModel = require("./Models/product");
+const userModel = require("./Models/user");
 const myApp = express();
-const productRouter = require("./Routes/productsRoutes")(productModel);
+myApp.use(bodyParser.json());
+myApp.use(cookieParser());
+const productRouter = require("./Routes/productsRoutes")(
+  productModel,
+  userModel
+);
 const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -19,6 +27,7 @@ mongoose
   });
 
 myApp.set("view engine", "ejs");
+myApp.use(express.json());
 
 const port = process.env.PORT || 4000;
 

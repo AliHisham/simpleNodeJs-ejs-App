@@ -27,6 +27,13 @@
   </head>
   <body class="text-center p-4">
     <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-danger" href="/logout">logout </a>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
       <% products.forEach((p=>{ %>
       <div class="col-4">
         <img class="rounded img-fluid w-100 h-75" src="<%=p.image%>" />
